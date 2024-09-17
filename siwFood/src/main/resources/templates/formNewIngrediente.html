@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Login</title>
+        <link rel="stylesheet" th:href="@{/body.css}">
+        <link rel="stylesheet" th:href="@{/header.css}">
+        <link rel="stylesheet" th:href="@{/nav.css}">
+        <link rel="stylesheet" th:href="@{/main.css}">
+        <link rel="stylesheet" th:href="@{/footer.css}">
+    </head>
+    <body>
+        <header>
+            <h1>siwFood</h1>
+        </header>
+        <nav>
+            <ul class="nav-left">
+                <li><a th:href="@{'/ricetta/'+${ricetta.id}}">Torna indietro</a></li>
+            </ul>
+            <ul class="nav-right">
+            </ul>
+        </nav>    
+        <main>
+            <div class="contenitore">
+                <form th:action="@{'/ricetta/'+${ricetta.id}+'/newIngrediente'}" method="post">
+                    <label for="nome">Nome: </label>
+                    <input required id="nome" type="text" th:field="${ingrediente.nome}"><br>
+                    <label for="quantita">Quantita: </label>
+                    <input required id="quantita" type="text" th:field="${ingrediente.quantita}"><br>
+                    <label for="unitaMisura">Unita di misura: </label>
+                    <input id="unitaMisura" type="text" th:field="${ingrediente.unitaMisura}"><br>
+                    <button type="submit">Conferma</button>
+                </form>
+            </div>
+        </main>
+        <footer>
+            <h3>By Lore'</h3>
+        </footer> 
+    </body>
+</html>

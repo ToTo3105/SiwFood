@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Login</title>
+        <link rel="stylesheet" th:href="@{/body.css}">
+        <link rel="stylesheet" th:href="@{/header.css}">
+        <link rel="stylesheet" th:href="@{/nav.css}">
+        <link rel="stylesheet" th:href="@{/main.css}">
+        <link rel="stylesheet" th:href="@{/footer.css}">
+    </head>
+    <body>
+        <header>
+            <h1>siwSport</h1>
+        </header>
+        <nav>
+            <ul class="nav-left">
+                <li><a href="/">Torna indietro</a></li>
+            </ul>
+            <ul class="nav-right">
+                <li><a th:href="@{/register}">Registrati</a></li>
+            </ul>
+        </nav>    
+        <main>
+            <div class="contenitore">
+                <div th:if="${userDetail!=null}" th.text="${userDetail.username}"></div>
+                <form th:action="@{/login}" method="post">
+                    <label for="username">Username</label>
+                    <input required id="username" type="text" name="username"><br>
+                    <label for="password">Password</label>
+                    <input required id="password" type="password" name="password"><br>
+                    <div th:if="${errorLogin!=null}" th:text="${errorLogin}">Errore</div>
+                    <button type="submit">Login</button><br>
+                </form>
+            </div>
+        </main>
+        <footer>
+            <h3>By Lore'</h3>
+        </footer> 
+    </body>
+</html>

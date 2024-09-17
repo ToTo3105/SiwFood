@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Login</title>
+        <link rel="stylesheet" th:href="@{/body.css}">
+        <link rel="stylesheet" th:href="@{/header.css}">
+        <link rel="stylesheet" th:href="@{/nav.css}">
+        <link rel="stylesheet" th:href="@{/main.css}">
+        <link rel="stylesheet" th:href="@{/footer.css}">
+    </head>
+    <body>
+        <header>
+            <h1>siwSport</h1>
+        </header>
+        <nav>
+            <ul class="nav-left">
+                <li><a href="/">Torna indietro</a></li>
+            </ul>
+            <ul class="nav-right">
+            </ul>
+        </nav>    
+        <main>
+            <div class="contenitore">
+                <form th:action="@{/register}" method="post">
+                    <label for="nome">Nome: </label>
+                    <input required id="nome" type="text" th:field="${cuoco.nome}"><br>
+                    <label for="cognome">Cognome: </label>
+                    <input required id="cognome" type="text" th:field="${cuoco.cognome}"><br>
+                    <label for="dataNascita">Data Nascita: </label>
+                    <input required id="dataNascita" type="date" th:field="${cuoco.dataNascita}"><br>
+                    <!--<label for="file">Immagine: </label>
+                    <input id="file" type="file" name="file"><br>
+                    <div th:if="${errore!=null}" th:text="${errore}">Errore</div>-->
+                    <label for="username">Username: </label>
+                    <input required id="username" type="text" th:field="${credenziali.username}"><br>
+                    <label for="password">Password: </label>
+                    <input required id="password" type="password" th:field="${credenziali.password}"><br>
+                    <button type="submit">Conferma</button>
+                </form>
+            </div>
+        </main>
+        <footer>
+            <h3>By Lore'</h3>
+        </footer> 
+    </body>
+</html>

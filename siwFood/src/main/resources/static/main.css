@@ -1,0 +1,40 @@
+main{
+    padding: 10px;
+}
+
+main a:visited {
+    color: black;
+}
+
+main a:link{
+    color: black;
+}
+
+main a:hover{
+    font-size: 1.1em;
+    color: red;
+}
+
+main h2{
+    color: red;
+}
+
+.contenitore{
+    border: outset;
+    width: 50%;
+    padding: 10px;
+    text-align: center;
+    margin: auto;
+}
+
+.contenitoreGrande{
+    text-align: center;
+    display: flex;    
+    flex-direction: column;
+    justify-content: center;
+}
+
+.contenitorePiccolo{
+    text-align: left;
+    display: flex;
+}

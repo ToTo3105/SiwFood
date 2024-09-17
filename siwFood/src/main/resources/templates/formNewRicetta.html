@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Login</title>
+        <link rel="stylesheet" th:href="@{/body.css}">
+        <link rel="stylesheet" th:href="@{/header.css}">
+        <link rel="stylesheet" th:href="@{/nav.css}">
+        <link rel="stylesheet" th:href="@{/main.css}">
+        <link rel="stylesheet" th:href="@{/footer.css}">
+    </head>
+    <body>
+        <header>
+            <h1>siwFood</h1>
+        </header>
+        <nav>
+            <ul class="nav-left">
+                <li><a th:href="@{'/profilo/'+${cuoco.id}}">Torna indietro</a></li>
+            </ul>
+            <ul class="nav-right">
+            </ul>
+        </nav>    
+        <main>
+            <div class="contenitore">
+                <form th:action="@{'/profilo/'+${cuoco.id}+'/newRicetta'}" method="post">
+                    <label for="nome">Nome: </label>
+                    <input required id="nome" type="text" th:field="${ricetta.nome}"><br>
+                    <label for="descrizione">Descrizione: </label>
+                    <input required id="descrizione" type="text" th:field="${ricetta.descrizione}"><br>
+                    <select th:field="${ricetta.tipologia}">
+                        <option th:each="tipologia : ${tipologie}" th:value="${tipologia}" th:text="${tipologia.toString()}"></option>
+                    </select><br>
+                    <button type="submit">Conferma</button>
+                </form>
+            </div>
+        </main>
+        <footer>
+            <h3>By Lore'</h3>
+        </footer> 
+    </body>
+</html>

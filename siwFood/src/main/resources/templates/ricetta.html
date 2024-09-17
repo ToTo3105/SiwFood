@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Login</title>
+        <link rel="stylesheet" th:href="@{/body.css}">
+        <link rel="stylesheet" th:href="@{/header.css}">
+        <link rel="stylesheet" th:href="@{/nav.css}">
+        <link rel="stylesheet" th:href="@{/main.css}">
+        <link rel="stylesheet" th:href="@{/footer.css}">
+    </head>
+    <body>
+        <header>
+            <h1>siwSport</h1>
+        </header>
+        <nav>
+            <ul class="nav-left">
+                <li><a href="/">Torna indietro</a></li>
+            </ul>
+            <ul class="nav-right">
+                <li th:if="${userDetails == null}"><a href="/login">Login</a></li>
+                <li th:if="${userDetails != null}"><a th:href="@{'/findProfilo/'+${userDetails.username}}" th:text="'Benvenuto: '+${userDetails.username}"></a></li>
+                <li th:if="${userDetails != null}"><a href="/logout">Logout</a></li>
+            </ul>
+        </nav>    
+        <main>
+            <div class="contenitoreGrande">
+                <div>
+                    <h2>Ricetta: </h2>
+                </div>
+                <div>Nome: <span th:text="${ricetta.nome}"></span></div>
+                <div>Descrizione: <span th:text="${ricetta.descrizione}"></span></div>
+                <div class="contenitorePiccolo"></div>
+                    <div>
+                        <h3>Ingredienti:</h3>
+                    </div>
+                    <div th:if="${ricetta.ingredienti!=null}" th:each="ingrediente : ${ricetta.ingredienti}">
+                        <p th:text="${ingrediente.nome}+' * '+${ingrediente.quantita}+' '+${ingrediente.unitaMisura != null ? ingrediente.unitaMisura:''}">nome e quantita</p>
+                    </div>
+                    <div th:if="${isMyRicetta}">
+                        <a th:href="@{'/ricetta/'+${ricetta.id}+'/newIngrediente'}">Aggiungi ingrediente</a>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <footer>
+            <h3>By Lore'</h3>
+        </footer> 
+    </body>
+</html>

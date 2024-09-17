@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Login</title>
+        <link rel="stylesheet" th:href="@{/body.css}">
+        <link rel="stylesheet" th:href="@{/header.css}">
+        <link rel="stylesheet" th:href="@{/nav.css}">
+        <link rel="stylesheet" th:href="@{/main.css}">
+        <link rel="stylesheet" th:href="@{/footer.css}">
+    </head>
+    <body>
+        <header>
+            <h1>siwSport</h1>
+        </header>
+        <nav>
+            <ul class="nav-left">
+                <li><a href="/">Torna indietro</a></li>
+            </ul>
+            <ul class="nav-right">
+                <li th:if="${userDetails == null}"><a href="/login">Login</a></li>
+                <li th:if="${userDetails != null}"><a th:href="@{'/findProfilo/'+${userDetails.username}}" th:text="'Benvenuto: '+${userDetails.username}"></a></li>
+                <li th:if="${userDetails != null}"><a href="/logout">Logout</a></li>
+            </ul>
+        </nav>    
+        <main>
+            <div class="contenitoreGrande">
+                <h2>Cuoco: </h2>
+                <div>Nome: <span th:text="${cuoco.nome}"></span></div>
+                <div>Cognome: <span th:text="${cuoco.cognome}"></span></div>
+                <div>DataNascita: <span th:text="${cuoco.DataNascita}"></span></div>
+                <div class="contenitorePiccolo">
+                    <h3>Ricette:</h3>
+                    <div th:if="${cuoco.ricette!=null}" th:each="ricetta : ${cuoco.ricette}">
+                        <a th:href="@{'/ricetta/'+${ricetta.id}}" th:text="${ricetta.nome}">nome</a>
+                    </div>
+                </div>
+                <div th:if="${isMyProfile}">
+                    <a th:href="@{'/profilo/'+${cuoco.id}+'/newRicetta'}">Aggiungi ricetta</a>
+                </div>
+            </div>
+        </main>
+        <footer>
+            <h3>By Lore'</h3>
+        </footer> 
+    </body>
+</html>
